@@ -1,0 +1,1 @@
+export const basePicturesPath="http://localhost:8085/"
