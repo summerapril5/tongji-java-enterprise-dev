@@ -1,0 +1,11 @@
+{
+  "fileName": "OneVersionInfo.java",
+  "filePath": "\\java\\com\\example\\demo\\structure",
+  "information": [
+    {
+      "time": "2024-10-10T14:07:04.234636100",
+      "content": "package com.example.demo.structure;\r\n\r\npublic class OneVersionInfo {\r\n\r\n    String time;\r\n    String content;\r\n\r\n    public OneVersionInfo(String time, String content) {\r\n        this.time \u003d time;\r\n        this.content \u003d content;\r\n    }\r\n\r\n    public String getContent() {\r\n        return content;\r\n    }\r\n\r\n    public void setContent(String content) {\r\n        this.content \u003d content;\r\n    }\r\n\r\n    public String getTime() {\r\n        return time;\r\n    }\r\n\r\n    public void setTime(String time) {\r\n        this.time \u003d time;\r\n    }\r\n}\r\n"
+    }
+  ],
+  "version": 0
+}

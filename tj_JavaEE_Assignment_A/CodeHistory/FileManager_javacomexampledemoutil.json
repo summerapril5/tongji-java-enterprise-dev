@@ -1,0 +1,11 @@
+{
+  "fileName": "FileManager.java",
+  "filePath": "\\java\\com\\example\\demo\\util",
+  "information": [
+    {
+      "time": "2024-10-10T14:07:04.229632300",
+      "content": "package com.example.demo.util;\r\n\r\nimport com.intellij.openapi.project.Project;\r\nimport com.intellij.openapi.roots.ProjectRootManager;\r\nimport com.intellij.openapi.vfs.VirtualFile;\r\n\r\nimport java.nio.file.Path;\r\nimport java.nio.file.Paths;\r\n\r\npublic class FileManager {\r\n    //获取本项目中定义的相对路径\r\n    static public String getRelativePath(VirtualFile file){\r\n        Project project\u003dProjectManager.getProject();\r\n        VirtualFile[] contentRoots \u003d ProjectRootManager.getInstance(project).getContentRoots();\r\n\r\n        VirtualFile baseDir \u003d contentRoots[0];\r\n        Path basePath \u003d Paths.get(baseDir.getPath());\r\n        Path filePath \u003d Paths.get(file.getPath()).getParent();\r\n        Path relativePath \u003d basePath.relativize(filePath);\r\n\r\n        return relativePath.toString();\r\n    }\r\n\r\n    static public String getRelativePath(Path parentPath){\r\n        Project project\u003dProjectManager.getProject();\r\n        VirtualFile[] contentRoots \u003d ProjectRootManager.getInstance(project).getContentRoots();\r\n\r\n        VirtualFile baseDir \u003d contentRoots[0];\r\n        Path basePath \u003d Paths.get(baseDir.getPath());\r\n        Path relativePath \u003d basePath.relativize(parentPath);\r\n\r\n        return relativePath.toString();\r\n    }\r\n\r\n    //判断是否为java文件\r\n    static public boolean isJavaFile(VirtualFile file) {\r\n        // 检查文件是否为空且是否是一个文件（而不是目录）\r\n        if (file \u003d\u003d null || file.isDirectory()) {\r\n            return false;\r\n        }\r\n        String fileName \u003d file.getName();\r\n        return fileName.endsWith(\".java\");\r\n    }\r\n}\r\n"
+    }
+  ],
+  "version": 0
+}

@@ -1,0 +1,11 @@
+{
+  "fileName": "HistoryQueryAction.java",
+  "filePath": "\\java\\com\\example\\demo\\localhistory",
+  "information": [
+    {
+      "time": "2024-10-10T14:07:04.263149800",
+      "content": "package com.example.demo.localhistory;\r\n\r\nimport com.intellij.openapi.actionSystem.AnAction;\r\nimport com.intellij.openapi.actionSystem.AnActionEvent;\r\nimport com.intellij.openapi.actionSystem.DataContext;\r\nimport com.intellij.openapi.actionSystem.PlatformDataKeys;\r\nimport com.intellij.openapi.editor.Editor;\r\nimport com.intellij.openapi.fileEditor.FileEditorManager;\r\nimport com.intellij.openapi.vfs.VirtualFile;\r\n\r\npublic class HistoryQueryAction extends AnAction {\r\n\r\n    @Override\r\n    public void actionPerformed(AnActionEvent e) {\r\n        //当前内容为演示如何获取当前显示文件\r\n        System.out.println(\"这是一个插件\");\r\n        // 获取当前上下文\r\n        DataContext dataContext \u003d e.getDataContext();\r\n\r\n        // 获取编辑器对象\r\n        Editor editor \u003d PlatformDataKeys.EDITOR.getData(dataContext);\r\n\r\n        // 获取当前打开文件的VirtualFile对象\r\n        // 注意：这里需要使用e.getProject()来获取当前项目，确保FileEditorManager能正确获取到文件\r\n        VirtualFile file \u003d FileEditorManager.getInstance(e.getProject()).getSelectedFiles()[0];\r\n\r\n        // 获取文件路径\r\n        String filePath \u003d file.getPath();\r\n\r\n        // 打印文件路径（或进行其他处理）\r\n        System.out.println(\"当前打开文件的路径: \" + filePath);\r\n    }\r\n}\r\n"
+    }
+  ],
+  "version": 0
+}

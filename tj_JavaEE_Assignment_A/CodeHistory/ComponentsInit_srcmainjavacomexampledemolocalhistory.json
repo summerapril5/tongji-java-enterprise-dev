@@ -1,0 +1,11 @@
+{
+  "fileName": "ComponentsInit.java",
+  "filePath": "\\src\\main\\java\\com\\example\\demo\\localhistory",
+  "information": [
+    {
+      "time": "2024-10-09T14:02:15.766563200",
+      "content": "package com.example.demo.localhistory;\r\n\r\nimport com.intellij.openapi.components.ApplicationComponent;\r\nimport com.intellij.openapi.vfs.VirtualFileManager;\r\n\r\npublic class ComponentsInit implements ApplicationComponent {\r\n    private final FileEventListener fileEventListener \u003d new FileEventListener();\r\n\r\n    @Override\r\n    public void initComponent() {\r\n        VirtualFileManager.getInstance().addVirtualFileListener(fileEventListener);\r\n    }\r\n\r\n    @Override\r\n    public void disposeComponent() {\r\n        VirtualFileManager.getInstance().removeVirtualFileListener(fileEventListener);\r\n    }\r\n}\r\n"
+    }
+  ],
+  "version": 0
+}

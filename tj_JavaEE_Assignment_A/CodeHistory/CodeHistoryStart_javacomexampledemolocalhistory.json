@@ -1,0 +1,11 @@
+{
+  "fileName": "CodeHistoryStart.java",
+  "filePath": "\\java\\com\\example\\demo\\localhistory",
+  "information": [
+    {
+      "time": "2024-10-10T14:07:04.236631800",
+      "content": "package com.example.demo.localhistory;\r\n\r\nimport com.example.demo.util.FileToJson;\r\nimport com.example.demo.util.ProjectManager;\r\nimport com.intellij.openapi.project.Project;\r\nimport com.intellij.openapi.roots.ProjectRootManager;\r\nimport com.intellij.openapi.startup.ProjectActivity;\r\nimport com.intellij.openapi.vfs.VirtualFile;\r\nimport kotlin.Unit;\r\nimport kotlin.coroutines.Continuation;\r\nimport org.jetbrains.annotations.NotNull;\r\nimport org.jetbrains.annotations.Nullable;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class CodeHistoryStart implements ProjectActivity {\r\n    @Override\r\n    public @Nullable Object execute(@NotNull Project project, @NotNull Continuation\u003c? super Unit\u003e continuation) {\r\n        System.out.println(\"打开项目\");\r\n\r\n        ProjectManager.setProject(project);\r\n\r\n        VirtualFile[] contentRoots \u003d ProjectRootManager.getInstance(project).getContentRoots();\r\n\r\n        // 假设我们在第一个内容根目录下创建 \"CodeHistory\" 目录\r\n        if (contentRoots.length \u003e 0) {\r\n            VirtualFile firstContentRoot \u003d contentRoots[0];\r\n\r\n            // 构建CodeHistory文件夹的虚拟文件路径\r\n            VirtualFile codeHistoryDir \u003d firstContentRoot.findChild(\"CodeHistory\");\r\n\r\n            // 如果文件夹不存在，则创建它\r\n            if (codeHistoryDir \u003d\u003d null) {\r\n                try {\r\n                    codeHistoryDir \u003d firstContentRoot.createChildDirectory(this, \"CodeHistory\");\r\n                } catch (Exception e) {\r\n                    // 处理可能的异常，例如权限问题等\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n\r\n            // 现在你可以使用 codeHistoryDir 来进行进一步的操作\r\n        }\r\n\r\n        for (VirtualFile root : contentRoots) {\r\n            try {\r\n                FileToJson.traverseDirectory(root, \"\");\r\n            } catch (IOException e) {\r\n                throw new RuntimeException(e);\r\n            }\r\n        }\r\n\r\n        return null;\r\n    }\r\n}"
+    }
+  ],
+  "version": 0
+}

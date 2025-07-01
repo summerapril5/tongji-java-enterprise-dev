@@ -1,0 +1,12 @@
+{
+  "fileName" : "ProjectManager.java",
+  "filePath" : "\\src\\main\\java\\com\\example\\demo\\util",
+  "information" : [ {
+    "time" : "2024-10-09T14:02:15.705900700",
+    "content" : "package com.example.demo.util;\r\n\r\nimport com.intellij.openapi.project.Project;\r\n\r\npublic class ProjectManager {\r\n    static private Project project;\r\n\r\n    static public void setProject(Project project){\r\n        ProjectManager.project=project;\r\n    }\r\n\r\n    static public Project getProject(){\r\n        return ProjectManager.project;\r\n    }\r\n}\r\n"
+  }, {
+    "time" : "2024-10-16T00:53:18.307360",
+    "content" : "package com.example.demo.util;\r\n\r\nimport com.intellij.openapi.project.Project;\r\n\r\npublic class ProjectManager {\r\n    static private Project project;\r\n\r\n    static public void setProject(Project project){\r\n        ProjectManager.project=project;\r\n    }\r\n\r\n    static public Project getProject() {\r\n        return ProjectManager.project;\r\n    }\r\n}\r\n"
+  } ],
+  "version" : 1
+}

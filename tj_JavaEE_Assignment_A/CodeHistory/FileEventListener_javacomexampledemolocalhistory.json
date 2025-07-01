@@ -1,0 +1,11 @@
+{
+  "fileName": "FileEventListener.java",
+  "filePath": "\\java\\com\\example\\demo\\localhistory",
+  "information": [
+    {
+      "time": "2024-10-10T14:07:04.261152",
+      "content": "package com.example.demo.localhistory;\r\n\r\nimport com.example.demo.util.FileManager;\r\nimport com.example.demo.util.FileToJson;\r\nimport com.intellij.openapi.vfs.*;\r\nimport org.jetbrains.annotations.NotNull;\r\n\r\nimport java.io.IOException;\r\nimport java.nio.file.Path;\r\nimport java.nio.file.Paths;\r\n\r\npublic class FileEventListener implements VirtualFileListener {\r\n    @Override\r\n    public void contentsChanged(@NotNull VirtualFileEvent event) {\r\n        // 文件内容发生变化时触发\r\n        VirtualFile file \u003d event.getFile();\r\n        if(FileManager.isJavaFile(file)){\r\n            try {\r\n                FileToJson.oneFileToJson(file,FileManager.getRelativePath(file));\r\n            } catch (IOException e) {\r\n                throw new RuntimeException(e);\r\n            }\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void fileCreated(@NotNull VirtualFileEvent event) {\r\n        // 文件被创建时触发\r\n        VirtualFile file \u003d event.getFile();\r\n        if(FileManager.isJavaFile(file)){\r\n            try {\r\n                FileToJson.oneFileToJson(file,FileManager.getRelativePath(file));\r\n            } catch (IOException e) {\r\n                throw new RuntimeException(e);\r\n            }\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void fileMoved(@NotNull VirtualFileMoveEvent event) {\r\n        // 文件被移动时触发\r\n        VirtualFile oldParent \u003d event.getOldParent();\r\n        VirtualFile newParent \u003d event.getNewParent();\r\n        Path oldfilePath \u003d Paths.get(oldParent.getPath());\r\n        Path newfilePath \u003d Paths.get(newParent.getPath());\r\n        try {\r\n            FileToJson.reviseFilePath(oldfilePath,newfilePath,event.getFile().getNameWithoutExtension());\r\n        } catch (IOException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n    }\r\n}\r\n"
+    }
+  ],
+  "version": 0
+}
